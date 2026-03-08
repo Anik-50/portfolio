@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Phone, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/profile1.jpeg";
 
 const socialLinks = [
   { icon: Mail, href: "mailto:anikdas20162016@gmail.com", label: "Email", color: "hover:text-primary-glow" },
