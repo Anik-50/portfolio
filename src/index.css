@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark Cyberpunk Portfolio Theme - Matte Black with Neon Accents */
+
+@layer base {
+  :root {
+    /* Matte Black Backgrounds */
+    --background: 0 0% 3.9%;  /* #0A0A0A */
+    --surface: 0 0% 5.9%;     /* #0F0F0F */
+    --card: 0 0% 7.1%;        /* #121212 */
+    
+    /* Text Colors */
+    --foreground: 0 0% 100%;           /* #FFFFFF */
+    --foreground-secondary: 0 0% 87.8%;  /* #E0E0E0 */
+    --foreground-muted: 0 0% 74.1%;      /* #BDBDBD */
+    
+    /* Primary CTA / Neon Accent */
+    --primary: 354 70% 57%;           /* #E63946 */
+    --primary-glow: 347 100% 59%;     /* #FF2E63 */
+    --primary-bright: 4 89% 58%;      /* #F44336 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Blob background (subtle aura) */
+    --blob-crimson: 348 83% 47%;      /* #DC143C */
+    --blob-maroon: 350 45% 14%;       /* deep maroon */
+    --blob-charcoal: 0 0% 14%;        /* dark grey */
+
+    --secondary: 0 0% 12.5%;           /* #202020 */
+    --secondary-foreground: 0 0% 87.8%;
+    
+    /* Borders & Dividers */
+    --border: 0 0% 12.5%;              /* #202020 */
+    --border-light: 0 0% 17.3%;        /* #2C2C2C */
+    
+    /* Muted Elements */
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 74.1%;
+    
+    /* Accent Glow */
+    --accent: 347 100% 59%;            /* #FF2E63 */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Card Foreground */
+    --card-foreground: 0 0% 87.8%;
+    
+    /* Popover */
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 0 0% 87.8%;
+    
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Input & Ring */
+    --input: 0 0% 17.3%;
+    --ring: 347 100% 59%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(354 70% 57%), hsl(347 100% 59%));
+    --gradient-glow: linear-gradient(180deg, hsl(347 100% 59% / 0.1), transparent);
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(347 100% 59% / 0.3), 0 0 40px hsl(347 100% 59% / 0.1);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Glow Effect Classes */
+  .glow-text {
+    text-shadow: 0 0 10px hsl(var(--primary-glow) / 0.5);
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 10px hsl(var(--accent) / 0.3);
+  }
+  
+  .glow-border-strong {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.5), 0 0 40px hsl(var(--accent) / 0.2);
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border-light));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+
+  /* Terminal Text Effect */
+  .terminal-text {
+    position: relative;
+    font-family: 'Courier New', monospace;
+    color: hsl(var(--foreground));
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  .terminal-text::after {
+    content: '|';
+    color: hsl(var(--primary-glow));
+    animation: blink-caret 0.75s step-end infinite;
+    margin-left: 2px;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-caret {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Glitch Effect */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 hsl(var(--primary));
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 hsl(var(--primary-glow));
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-anim {
+    0% { clip: rect(61px, 9999px, 50px, 0); }
+    20% { clip: rect(67px, 9999px, 104px, 0); }
+    40% { clip: rect(28px, 9999px, 146px, 0); }
+    60% { clip: rect(16px, 9999px, 125px, 0); }
+    80% { clip: rect(53px, 9999px, 38px, 0); }
+    100% { clip: rect(99px, 9999px, 72px, 0); }
+  }
+
+  @keyframes glitch-anim-2 {
+    0% { clip: rect(129px, 9999px, 36px, 0); }
+    20% { clip: rect(100px, 9999px, 83px, 0); }
+    40% { clip: rect(15px, 9999px, 94px, 0); }
+    60% { clip: rect(103px, 9999px, 57px, 0); }
+    80% { clip: rect(43px, 9999px, 121px, 0); }
+    100% { clip: rect(76px, 9999px, 8px, 0); }
+  }
+
+  /* Sliding Gradient Text */
+  .gradient-slide-text {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--primary-bright)), hsl(var(--primary-glow)), hsl(var(--primary)));
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-slide 3s linear infinite;
+  }
+
+  @keyframes gradient-slide {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
