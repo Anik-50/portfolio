@@ -38,7 +38,7 @@ export const Thesis = () => {
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary-glow transition-colors">
                     Shoulder Implant Xray Image Classification With Attention Based Deep Learning Model
                   </h3>
-                  <p className="text-foreground-secondary leading-relaxed mb-6">
+                  <p className="text-foreground-muted leading-relaxed mb-6 max-w-2xl text-justify">
                     This research focuses on developing an advanced deep learning model incorporating attention mechanisms
                     to accurately classify shoulder implant X-ray images. The model aims to assist medical professionals
                     in identifying implant types and detecting potential complications, contributing to improved diagnostic
